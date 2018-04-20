@@ -118,16 +118,16 @@ class Customer extends Model {
     }
 
     /**
-     * This methods allows a customer ot add product to this cart
+     * This methods allows a customer ot add category to this cart
      */
     public function addProductToCart() {
         // Check if add button is submitted
         if (isset($_POST['add'])):
-            // Get product data by its id
+            // Get category data by its id
             $this->query("SELECT * FROM products WHERE prod_id= '$_POST[id]'");
             $this->execute();
             $result = $this->single();
-            // Set max_buying SESSION equals to product price and the quantity that customer selected
+            // Set max_buying SESSION equals to category price and the quantity that customer selected
             $_SESSION['max_buying'] -= $result['prod_price'] * $_POST['quantity'];
             // Check if the customer select products more than his cache
             if ($_SESSION['max_buying'] >= 0):
@@ -136,7 +136,7 @@ class Customer extends Model {
                     $count = count($_SESSION['shopping_cart']);
                     $product_ids = array_column($_SESSION['shopping_cart'], 'id');
                     for ($i = 0, $iMax = count($product_ids); $i < $iMax; $i++):
-                        // Check if the product is already exist in the cart so the quantity will increase
+                        // Check if the category is already exist in the cart so the quantity will increase
                         if ($product_ids[$i] === $_POST['id']):
                             $_SESSION['shopping_cart'][$i]['quantity'] += $_POST['quantity'];
                             $_SESSION['shopping_cart'][$i]['subTotal'] += $result['prod_price'] * $_POST['quantity'];
@@ -145,7 +145,7 @@ class Customer extends Model {
                             exit;
                         endif;
                     endfor;
-                    // Add product to customer's cart
+                    // Add category to customer's cart
                     $_SESSION['shopping_cart'][$count] = array(
                         'id'        => $_POST['id'],
                         'title'     => $result['prod_title'],
@@ -157,7 +157,7 @@ class Customer extends Model {
                     header('Location: '.$_SERVER['PHP_SELF']);
                     exit;
                 else:
-                    // Add product to customer's cart
+                    // Add category to customer's cart
                     $_SESSION['shopping_cart'] = array();
                     $_SESSION['shopping_cart'][0] = array(
                         'id'        => $_POST['id'],
@@ -187,7 +187,7 @@ class Customer extends Model {
         // Check if the quantity is increased
         if (isset($_REQUEST['qid'], $_REQUEST['quantity'])):
             foreach ($_SESSION['shopping_cart'] as $key => $item):
-                // Check which product will be increased
+                // Check which category will be increased
                 if ($item['id'] === $_REQUEST['qid']):
                     // Check if the customer has enough balance
                     if ($_SESSION['max_buying'] >= $_SESSION['shopping_cart'][$key]['price']):
@@ -218,7 +218,7 @@ class Customer extends Model {
                 return;
             else:
                 foreach ($_SESSION['shopping_cart'] as $key => $item):
-                    // Check which product will be deleted
+                    // Check which category will be deleted
                     if ($item['id'] === $_REQUEST['did']):
                         $_SESSION['max_buying'] += $item['price'] * $item['quantity'];
                         unset($_SESSION['shopping_cart'][$key]);
@@ -262,7 +262,7 @@ class Customer extends Model {
      * This methods allows the customer to rate the products after buying process
      */
     public function rateProducts() {
-        // Check if the customer has rated a product
+        // Check if the customer has rated a category
         if (isset($_GET['id'], $_GET['rating'])):
             $productID = (int) $_GET['id'];
             $rating = (int) $_GET['rating'];
@@ -272,11 +272,11 @@ class Customer extends Model {
             $this->bind(':pid', $productID);
             $this->execute();
             $result = $this->single();
-            // Check if the customer has rated this product before
+            // Check if the customer has rated this category before
             if ($result > 0):
                 $_SESSION['success_msg'] = 'You already voted';
             else:
-                // Add the rating to the rating product database table
+                // Add the rating to the rating category database table
                 $this->query('INSERT INTO products_ratings (rating, prod_id, cust_id) VALUES (:rate, :pid, :cid)');
                 $this->bind(':rate', $rating);
                 $this->bind(':pid', $productID);

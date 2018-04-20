@@ -13,7 +13,7 @@ class Product extends Model {
 
 
     /**
-     * This methods returns all records of products that are in the product database table joined by rating products table
+     * This methods returns all records of products that are in the category database table joined by rating products table
      *
      * @return mixed
      */

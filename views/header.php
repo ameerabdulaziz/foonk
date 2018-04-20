@@ -20,7 +20,11 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="fruits.php">Fruits</a></li>
+                    <li><a href="vegetables.php">Vegetables</a></li>
+                    <li><a href="drinks.php">Drinks</a></li>
+                    <li><a href="desserts.php">Desserts</a></li>
+                    <li><a href="others.php">Others</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (isset($_SESSION['cust_id'])): ?>

@@ -11,6 +11,7 @@ require_once CLASSES.'Message.php';
 /***************************** Requiring Models *********************************/
 require_once MODELS.'Customer.php';
 require_once MODELS.'Product.php';
+require_once MODELS.'category.php';
 /********************************************************************************/
 
 session_start();                                                // Staring Session
@@ -21,4 +22,8 @@ $customer = new Customer();
 
 /********************************* New Product **********************************/
 $products = new Product();
+/********************************************************************************/
+
+/********************************* New Product **********************************/
+$category = new Category();
 /********************************************************************************/
