@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.navbar-default {
+    background-color: #bfbd60;
+    border: none;
+}
+#logo {
+    height: 100%;
+}
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+#header_wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    background: url('../images/header&logo/background-header.jpg') no-repeat fixed top center;
+    opacity: 0.7;
+    background-size: 100% 700px;
+}
+#logo-text {
+    position: absolute;
+    width: 100%;
+    height: 180px;
+    background: url('../images/header&logo/logo1.png') no-repeat center;
+    background-size: 70% 100px;
+    top: 50%;
+    margin-top: -90px;
+}
+.content-area {
+    margin-top: 30px;
+    background: white;
+}
+.no-padding {
+    padding: 0 0 10px 0;
+}
+/*****************************************************Home*************************************************************/
+.item {
+    /*height: 260px;*/
+    border: 1px solid silver;
+    box-shadow: 0 0 10px gray;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 0 0 0 25px;
+}
+.top {
+    height: 200px;
+    background: #a4a11b;
+}
+.top img {
+    width: 100%;
+    height: 100%;
+    border-bottom: 7px solid #e6e6e6;
+}
+.bottom label {
+    font-weight: bold;
+    margin: 10px auto;
+}
+    /*height: 60px;*/
+
+.item-title {
+    color: #a4a11b;
+    margin: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.price {
+    color: #a4a11b;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.top {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.top:hover .image {
+    opacity: 0.3;
+}
+
+.top:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+.btn-custom {
+    background: #a4a11b;
+    color: #fff
+}
+footer {
+    background-color: #bfbd60;
+    /*margin-bottom: -15px;*/
+}
+footer > h4 {
+    color: white;
+    padding: 10px;
+}
+#error-message {
+    display: none;
+}
