@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 27, 2018 at 11:59 AM
--- Server version: 10.1.26-MariaDB-1
--- PHP Version: 7.1.14
+-- Host: localhost:3306
+-- Generation Time: Apr 22, 2018 at 01:07 PM
+-- Server version: 10.2.12-MariaDB
+-- PHP Version: 7.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ameer93`
+-- Database: `id5493543_foonk`
 --
 
 -- --------------------------------------------------------
@@ -53,7 +55,7 @@ CREATE TABLE `customers` (
   `password` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `balance` double NOT NULL DEFAULT '100'
+  `balance` double NOT NULL DEFAULT 100
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -79,7 +81,8 @@ INSERT INTO `customers` (`cust_id`, `full_name`, `username`, `email`, `password`
 (24, 'Ahmed Helmy', 'helmy', 'helmy@helmy.com', '513ee35113c3aa2db35f19d86e474164', 'Egypt', '', 68),
 (25, 'Tania Jimenez', 'Tania', 'taniajimenez@gmail.com', '4713d632211f30b0455963b6ecd21c4d', 'venezuela', '+584149443695', 79.35),
 (26, 'Froilan', 'froilan', 'froilanl@hotmail.com', '26602c9a28d6e859990070d8a75f0386', 'venezuela', '584140000000', 85.35),
-(27, 'Abc', 'abc', 'abc@abc.com', '8249fd5d1fbe33e5f32bc6408476e867', 'abc', '123', 92.7);
+(27, 'Abc', 'abc', 'abc@abc.com', '8249fd5d1fbe33e5f32bc6408476e867', 'abc', '123', 92.7),
+(28, 'Daniel Beeh', 'mr.dan', 'roshdydaniel@gmail.com', 'dbcb07117adada87ff0e8df4e896ee52', 'btna al f al shar3', 'm3 kol al bnat', 100);
 
 -- --------------------------------------------------------
 
@@ -102,9 +105,19 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`prod_id`, `prod_title`, `prod_description`, `prod_image`, `prod_price`, `cat_id`) VALUES
 (1, 'Apple', 'This is a delicious apple.', 'apple.jpg', 0.3, 1),
-(2, 'Beer', 'This is a delicious apple.', 'beer.jpg', 2, 2),
-(3, 'Water', 'This is a delicious water.', 'water.jpg', 1, 2),
-(4, 'Cheese', 'This is a delicious cheese.', 'cheese.jpg', 3.75, 1);
+(2, 'Beer', 'This is a delicious apple.', 'beer.jpg', 2, 3),
+(3, 'Water', 'This is a delicious water.', 'water.jpg', 1, 3),
+(4, 'Cheese', 'This is a delicious cheese.', 'cheese.jpg', 3.75, 5),
+(5, 'kiwi', 'This is a delicious', 'kiwi.jpg', 0, 1),
+(6, 'Croissant', 'This is a delicious', 'croissant.jpg', 0, 4),
+(7, 'Strawberry', 'This is a delicious', 'strawberry.jpg', 0, 1),
+(8, 'Tart Cranberry', 'This is a delicious', 'tart_cranberry_pie.jpg', 0, 4),
+(9, 'Cabbage', 'This is a delicious', 'cabbage.jpg', 0, 2),
+(10, 'Chocolate Cake', 'This is a delicious', 'chocolate_cake.jpg', 0, 4),
+(11, 'Cauliflower', 'This is a delicious', 'cauliflower.jpg', 0, 2),
+(12, 'Philadelphia', 'This is a delicious', 'PHILADELPHIA_Classic.jpg', 0, 4),
+(13, 'Fruit Juice', 'This is a delicious', 'fruit_juice.jpg', 0, 3),
+(14, 'Cold Watermelon', 'This is a delicious', 'cold_pressed_watermelon.jpg', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -180,21 +193,26 @@ ALTER TABLE `products_ratings`
 --
 ALTER TABLE `categories`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 --
 -- AUTO_INCREMENT for table `products_ratings`
 --
 ALTER TABLE `products_ratings`
   MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
